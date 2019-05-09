@@ -19,6 +19,7 @@ public class SistemaOperacional implements Runnable {
 	@Override
 	public void run() {
 		//thread
+		System.out.println("Teste so...");
 	}
 	
 	public Recurso pegaRecurso(){
