@@ -1,6 +1,6 @@
 package modelos;
 
-public class Processo {
+public class Processo implements Runnable{
 	private int id;
 	
 	//tempo em segundos
@@ -11,6 +11,11 @@ public class Processo {
 		this.id = id;
 		this.tempoSolicitacao = tempoSolicitacao;
 		this.tempoUtilizacao = tempoUtilizacao;
+	}
+	
+	@Override
+	public void run() {
+		//thread
 	}
 
 	public int getId() {
@@ -48,6 +53,4 @@ public class Processo {
 	public void elimina() {
 		
 	}
-	
-	
 }

@@ -11,6 +11,14 @@ public class ListaDeRecursos {
 		this.recursos = new ArrayList<Recurso>();
 	}
 	
+	public int quantidade() {
+		return recursos.size();
+	}
+	
+	public Recurso getRecurso(int index){
+		return recursos.get(index);
+	}
+	
 	public void adiciona(Recurso recurso) {
 		if(recursos.size() <= MAXIMO_RECURSOS) {
 			recursos.add(recurso);

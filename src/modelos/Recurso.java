@@ -4,28 +4,22 @@ public class Recurso {
 	private String nome;
 	private int id;
 	private int quantidade;
+	private int ocupado;
 	
 	public Recurso(String nome, int id, int quantidade) {
 		super();
 		this.nome = nome;
 		this.id = id;
 		this.quantidade = quantidade;
+		this.ocupado = 0;
 	}
 	
 	public String getNome() {
 		return nome;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
 	public int getId() {
 		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public int getQuantidade() {

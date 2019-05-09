@@ -13,7 +13,6 @@ public class ListaDeProcessos {
 	}
 	
 	public void adicionaProcesso(Processo processo) {
-		//no maximo 15 processos
 		if(processos.size() <= MAXIMO_PROCESSOS) {
 			processos.add(processo);
 			processo.executa();
