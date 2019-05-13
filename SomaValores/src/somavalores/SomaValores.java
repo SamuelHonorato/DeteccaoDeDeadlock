@@ -22,6 +22,7 @@ public class SomaValores {
         res = Soma(valor1 , valor2);
         System.out.printf("O resultado da soma é: %d\n", res);
         int x = 0;
+        int b = 2;
                 
                 
     }
