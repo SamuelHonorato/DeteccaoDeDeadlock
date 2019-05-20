@@ -19,16 +19,16 @@ public class ListaDeProcessos {
 		}
 	}
 	
-	public void eliminaProcesso(int id) {
+	public void eliminaProcesso(String id) {
 		int index = pegaProcesso(id);
 		processos.get(index).elimina();
 		processos.remove(index);
 	}
 	
-	public int pegaProcesso(int id) {
+	public int pegaProcesso(String id) {
 		int index = -1;
 		for(int i = 0; i < processos.size(); i++) 
-			if(processos.get(i).getId() == id) 
+			if(processos.get(i).getId().equalsIgnoreCase(id)) 
 				index = i;
 		
 		return index;
