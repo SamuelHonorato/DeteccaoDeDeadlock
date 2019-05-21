@@ -3,15 +3,15 @@ package modelos;
 import java.util.ArrayList;
 import java.util.Random;
 
-import Interfaces.SistemaOperacionaInterface;
+import Interfaces.LogInterface;
 
-public class SistemaOperacional implements Runnable {
+public class SistemaOperacional extends Thread {
 	//tempo em segundos
 	private int tempoVerificaDeadlock;
 	private ListaDeRecursos recursos;
 	private Random gerador;
 	
-	public SistemaOperacionaInterface delegate;
+	public LogInterface delegate;
 
 	public SistemaOperacional(int tempoVerificaDeadlock) {
 		super();
@@ -23,17 +23,19 @@ public class SistemaOperacional implements Runnable {
 	@Override
 	public void run() {
 		//thread
-		while(true){
-			System.out.println("voltou");
-			try {
-				this.wait(3);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			delegate.adicionaLog("Verifica deadlock");
-		}
 		
+		while(true) {
+			delegate.adicionaLog("Verifica deadlock");
+			
+			for(int i=0; i<tempoVerificaDeadlock; i++) {
+				try {
+					sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 	
 	public void adicionaRecurso(int id, String nome, int quantidade){

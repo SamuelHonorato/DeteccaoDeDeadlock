@@ -15,7 +15,8 @@ public class ListaDeProcessos {
 	public void adicionaProcesso(Processo processo) {
 		if(processos.size() <= MAXIMO_PROCESSOS) {
 			processos.add(processo);
-			processo.executa();
+			//processo.executa();
+			processo.start();
 		}
 	}
 	
@@ -28,7 +29,7 @@ public class ListaDeProcessos {
 	public int pegaProcesso(String id) {
 		int index = -1;
 		for(int i = 0; i < processos.size(); i++) 
-			if(processos.get(i).getId().equalsIgnoreCase(id)) 
+			if(processos.get(i).getIdProcesso().equalsIgnoreCase(id)) 
 				index = i;
 		
 		return index;

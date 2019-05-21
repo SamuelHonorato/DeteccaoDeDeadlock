@@ -1,10 +1,10 @@
 package modelos;
 
 import Interfaces.PainelInterface;
-import Interfaces.SistemaOperacionaInterface;
+import Interfaces.LogInterface;
 import views.Painel;
 
-public class Controller implements PainelInterface, SistemaOperacionaInterface {
+public class Controller implements PainelInterface, LogInterface {
 
 	private Painel painel;
 	private SistemaOperacional sistemaOperacional;
@@ -25,11 +25,14 @@ public class Controller implements PainelInterface, SistemaOperacionaInterface {
 		
 		adicionaLog(sistemaOperacional.toString());
 		
-		this.sistemaOperacional.run();
+		this.sistemaOperacional.start();
 	}
 	
-	public void adicionaProcesso(Processo processo){
+	public void adicionaProcesso(String id, int tempoSolicitacao, int tempoUtilizacao){
+		Processo processo = new Processo(id, tempoSolicitacao, tempoUtilizacao);
 		listaDeProcessos.adicionaProcesso(processo);
+		adicionaLog(id + "(" + tempoSolicitacao + ", " + tempoUtilizacao + "): adicionado" );
+		painel.adicionaMensagemProcesso(id);
 	}
 	
 	public void adicionaRecurso(int id, String nome, int quantidade){

@@ -1,7 +1,5 @@
 package views;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -12,7 +10,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import modelos.SistemaOperacional;
 import Interfaces.PainelInterface;
 
 public class Painel extends JFrame {
@@ -73,7 +70,7 @@ public class Painel extends JFrame {
 		JTextField tempoSolicitacaoProcesso = new JTextField("Tempo Solicitacao");
 		tempoSolicitacaoProcesso.setBounds(x, idProcesso.getY()+35, 150, 30);
 		
-		JTextField tempoUtilizacaoProcesso = new JTextField("Tempo Solicitacao");
+		JTextField tempoUtilizacaoProcesso = new JTextField("Tempo Utilizacao");
 		tempoUtilizacaoProcesso.setBounds(x, tempoSolicitacaoProcesso.getY()+35, 150, 30);
 		
 		JButton botaoProcesso = new JButton("Adicionar Processo");
@@ -83,7 +80,7 @@ public class Painel extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				divLogs.adicionaLinha("Processo adicionado com sucesso", true);
+				delegate.adicionaProcesso(idProcesso.getText(), Integer.parseInt(tempoSolicitacaoProcesso.getText()), Integer.parseInt(tempoUtilizacaoProcesso.getText()));
 			}
 		});
 		
@@ -133,6 +130,10 @@ public class Painel extends JFrame {
 	
 	public void adicionaMensagemDeLog(String mensagem){
 		divLogs.adicionaLinha(++count + ": " + mensagem, true);
+	}
+	
+	public void adicionaMensagemProcesso(String mensagem){
+		divProcessos.adicionaLinha(mensagem, false);
 	}
 	
 	public void adicionaMensagemRecurso(String mensagem){

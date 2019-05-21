@@ -2,9 +2,8 @@ package modelos;
 
 import java.util.ArrayList;
 
-public class Processo implements Runnable{
+public class Processo extends Thread{
 	private String id;
-	
 	//tempo em segundos
 	private int tempoSolicitacao;
 	private int tempoUtilizacao;
@@ -20,6 +19,19 @@ public class Processo implements Runnable{
 	@Override
 	public void run() {
 		//thread
+		while(true){
+			System.out.println(id);
+			for(int i=0; i<tempoUtilizacao; i++){
+				try {
+					sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		
 	}
 	
 	public String toString(){
@@ -39,7 +51,7 @@ public class Processo implements Runnable{
 		return rodando ? "rodando" : "bloqueado";
 	}
 
-	public String getId() {
+	public String getIdProcesso() {
 		return id;
 	}
 
